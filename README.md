@@ -1,24 +1,107 @@
-# README
+# Grain Technical Test
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Grain Technical Test
 
-Things you may want to cover:
+# Getting Started
 
-* Ruby version
+### Install required ruby gems
 
-* System dependencies
+bundle the ruby gems
 
-* Configuration
+```
+$ bundle install
+```
 
-* Database creation
+### Migrate the database
 
-* Database initialization
+```
+$ rails db:setup
+```
 
-* How to run the test suite
+## The website is working now.
 
-* Services (job queues, cache servers, search engines, etc.)
+```
+$ rails s
+```
 
-* Deployment instructions
+# Running the tests
 
-* ...
+```
+$ rspec
+```
+
+# Orders API
+
+***Now support only orders list and order detail ***
+
+## Get orders list 
+
+### Request ###
+
+`GET /orders`
+
+### Params ###
+
+None
+
+### Response ###
+
+**Code:** `200 (OK)` **Content:** `JSON`
+
+```json
+{
+ "orders":[
+  {
+   "order_id":"ORD1519985528",
+   "delivery_date":"2018-03-02",
+   "delivery_time":"10:12 - 10:42 AM"
+  },
+  {
+   "order_id":"ORD1519985538",
+   "delivery_date":"2018-03-02",
+   "delivery_time":"10:12 - 10:42 AM"
+  }
+ ]
+}
+```
+
+
+## Get order detail 
+
+### Request ###
+
+`GET /orders/:order_id`
+
+### Params ###
+
+	order_id: "ORD1519985528"
+
+### Response ###
+
+**Code:** `200 (OK)` **Content:** `JSON`
+
+```json
+{
+ "order":{
+  "order_id":"ORD1519985528",
+  "delivery_date":"2018-03-02",
+  "delivery_time":"10:12 - 10:42 AM",
+  "order_items":[
+   {
+    "name":"Laksa Potato Salad",
+    "quantity":1,
+    "total_price":10
+   }
+  ]
+ }
+}
+```
+
+**Code:** `404 (NotFound)` **Content:** `JSON`
+
+```json
+{
+ "status": "Failed",
+ "msg": "Order_id Not Found"
+}
+```

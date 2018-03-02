@@ -11,5 +11,9 @@ require 'rails_helper'
 #   end
 # end
 RSpec.describe OrdersHelper, type: :helper do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it '#cal_total_price' do
+    meal = create(:meal)
+    item = create(:order_item, quantity:100, unit_price: 66, delivery_order_id: 1, meal_id: meal.id)
+    expect(cal_total_price(item)).to eq (6600)
+  end
 end
