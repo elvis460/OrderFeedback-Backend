@@ -7,4 +7,8 @@ module OrdersHelper
   def cal_total_price(item)
     item.quantity * item.unit_price
   end
+
+  def feedback_status(order)
+    order.feedback.present?
+  end
 end
