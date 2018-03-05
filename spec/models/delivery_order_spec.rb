@@ -2,6 +2,10 @@ require 'rails_helper'
 
 RSpec.describe DeliveryOrder, type: :model do
   it 'is accessible' do
+     # clear db
+    DatabaseCleaner.strategy = :truncation
+    DatabaseCleaner.clean
+    
     order = create(:delivery_order)
     expect(order).to eq(DeliveryOrder.last)
   end

@@ -2,6 +2,10 @@ require 'rails_helper'
 
 RSpec.describe Meal, type: :model do
   it 'is accessible' do
+     # clear db
+    DatabaseCleaner.strategy = :truncation
+    DatabaseCleaner.clean
+    
     meal = create(:meal)
     expect(meal).to eq(Meal.last)
   end
