@@ -4,9 +4,6 @@ require 'database_cleaner'
 
 RSpec.describe 'orders',  type: :request do
   before(:all) do
-    # clear db
-    DatabaseCleaner.strategy = :truncation
-    DatabaseCleaner.clean
     # build fake data
     @meal = create(:meal)
     @delivery_order = create(:delivery_order)

@@ -2,10 +2,6 @@ require 'rails_helper'
 
 RSpec.describe OrderItem, type: :model do
   before(:all) do
-     # clear db
-    DatabaseCleaner.strategy = :truncation
-    DatabaseCleaner.clean
-    
     @meal = create(:meal)
     @delivery_order = create(:delivery_order)
   end 

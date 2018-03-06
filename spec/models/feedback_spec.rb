@@ -2,10 +2,6 @@ require 'rails_helper'
 
 RSpec.describe Feedback, type: :model do
    before(:all) do
-     # clear db
-    DatabaseCleaner.strategy = :truncation
-    DatabaseCleaner.clean
-
     @meal = create(:meal)
     @delivery_order = create(:delivery_order)
     @order_items = @delivery_order.order_items.create(meal_id: @meal.id, serving_date: Time.now.to_datetime, quantity: 1, unit_price: 10)
